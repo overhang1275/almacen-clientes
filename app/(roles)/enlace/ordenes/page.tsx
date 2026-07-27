@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Toast } from "../../almacen/entrada/Toast";
 import { NewOrderButton } from "./NewOrderButton";
 import { getPage, getPageSize, pageRange, Pagination } from "../../Pagination";
+import { DownloadOpPdfButton } from "../DownloadOpPdfButton";
 
 type PageProps = {
   searchParams?: Record<string, string | undefined>;
@@ -80,10 +81,13 @@ export default async function OrdenesPage({ searchParams }: PageProps) {
                   <td className="px-4 py-3">{order.due_date ? new Date(order.due_date).toLocaleDateString("es-MX") : "-"}</td>
                   <td className="px-4 py-3">{statusText[order.status] ?? order.status}</td>
                   <td className="px-4 py-3">
-                    <Link className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-3 py-2 font-medium hover:border-slate-500" href={`/enlace/asignar/${order.id}`}>
-                      <ArrowRight aria-hidden className="h-4 w-4" />
-                      Asignar
-                    </Link>
+                    <div className="flex flex-wrap gap-2">
+                      <Link className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-3 py-2 font-medium hover:border-slate-500" href={`/enlace/asignar/${order.id}`}>
+                        <ArrowRight aria-hidden className="h-4 w-4" />
+                        Asignar
+                      </Link>
+                      <DownloadOpPdfButton compact orderId={order.id} opNumber={order.op_number} />
+                    </div>
                   </td>
                 </tr>
               ))}

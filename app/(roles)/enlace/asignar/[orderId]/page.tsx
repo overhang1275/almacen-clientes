@@ -7,6 +7,7 @@ import { Toast } from "../../../almacen/entrada/Toast";
 import { Realtime } from "../../Realtime";
 import { AssignForm } from "./AssignForm";
 import { unitLabel } from "../../../units";
+import { DownloadOpPdfButton } from "../../DownloadOpPdfButton";
 
 type PageProps = {
   params: {
@@ -93,10 +94,13 @@ export default async function AsignarPage({ params, searchParams = {} }: PagePro
           <h1 className="mt-1 text-3xl font-semibold text-slate-950">{order.clients?.name ?? "Cliente"}</h1>
           <p className="mt-2 text-slate-600">{order.description}</p>
         </div>
-        <Link className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-3 py-2 text-sm font-medium hover:border-slate-500" href="/enlace/ordenes">
-          <ArrowLeft aria-hidden className="h-4 w-4" />
-          Ordenes
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <DownloadOpPdfButton orderId={order.id} opNumber={order.op_number} />
+          <Link className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-3 py-2 text-sm font-medium hover:border-slate-500" href="/enlace/ordenes">
+            <ArrowLeft aria-hidden className="h-4 w-4" />
+            Ordenes
+          </Link>
+        </div>
       </header>
 
       <section className="grid gap-6 lg:grid-cols-[1fr_360px]">

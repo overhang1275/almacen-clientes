@@ -1,0 +1,48 @@
+{
+  "name": "almacen-clientes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "npx supabase db query --linked --file supabase/seed.sql",
+    "validate:functional": "npx supabase db query --linked --file supabase/validate_sprint6.sql"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-label": "latest",
+    "@radix-ui/react-select": "latest",
+    "@radix-ui/react-slot": "latest",
+    "@radix-ui/react-tabs": "latest",
+    "@supabase/ssr": "latest",
+    "@supabase/supabase-js": "latest",
+    "@tanstack/react-query": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "date-fns": "latest",
+    "framer-motion": "latest",
+    "lucide-react": "latest",
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "latest",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "latest",
+    "zod": "latest",
+    "zustand": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "postcss": "latest",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: #111827;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+button,
+[role="button"],
+input,
+select,
+textarea {
+  min-height: 44px;
+}
+
+a[href].inline-flex {
+  min-height: 44px;
+}
+
+input,
+select,
+textarea {
+  font-size: 1rem;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+dialog {
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
+}

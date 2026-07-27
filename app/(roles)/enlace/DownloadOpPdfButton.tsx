@@ -10,21 +10,25 @@ export function DownloadOpPdfButton({ orderId, opNumber, compact = false }: { or
   async function download() {
     setBusy(true);
     setMessage("Generando documento...");
-    const response = await fetch(`/api/enlace/ordenes/${orderId}/pdf`);
-    if (!response.ok) {
+    try {
+      const response = await fetch(`/api/enlace/ordenes/${orderId}/pdf`);
+      if (!response.ok) {
+        setMessage("No se pudo generar el PDF.");
+        return;
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `OP-${opNumber}.pdf`;
+      link.click();
+      URL.revokeObjectURL(url);
+      setMessage("PDF descargado.");
+    } catch {
       setMessage("No se pudo generar el PDF.");
+    } finally {
       setBusy(false);
-      return;
     }
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `OP-${opNumber}.pdf`;
-    link.click();
-    URL.revokeObjectURL(url);
-    setMessage("PDF descargado.");
-    setBusy(false);
   }
 
   return (
